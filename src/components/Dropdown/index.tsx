@@ -10,9 +10,16 @@ interface DropdownProps {
   placeHolder: string;
   options: Option[];
   onChange: (value: string) => void;
+  width?: number;
 }
 
-const Dropdown = ({ value, placeHolder, options, onChange }: DropdownProps) => {
+const Dropdown = ({
+  value,
+  placeHolder,
+  options,
+  onChange,
+  width = 200,
+}: DropdownProps) => {
   const [open, setOpen] = useState(false);
 
   const handleSelect = (value: string) => {
@@ -23,16 +30,18 @@ const Dropdown = ({ value, placeHolder, options, onChange }: DropdownProps) => {
   return (
     <div className="relative inline-block">
       <div
-        className="w-[200px] cursor-pointer rounded-md border border-solid px-2 py-1"
+        className={`w-[${width}px] cursor-pointer rounded-md border border-solid px-3 py-[6px] flex items-center`}
         onClick={() => setOpen((prev) => !prev)}
       >
         {options.find((o) => o.value === value)?.label || placeHolder}
       </div>
-      {open && (    
-        <div className="absolute z-10 mt-[0.5px] flex w-[200px] select-none flex-col gap-2 overflow-hidden rounded-md border border-solid bg-white py-1">
+      {open && (
+        <div
+          className={`absolute z-10 mt-[0.5px] flex w-[${width}px] select-none flex-col gap-1 sm:gap-2 overflow-hidden rounded-md border border-solid bg-white py-1`}
+        >
           {options.map((option) => (
             <div
-              className={`cursor-pointer px-2 py-1 ${option.value === value && "bg-blue-200"}`}
+              className={`cursor-pointer px-3 py-1 ${option.value === value && "bg-blue-200"}`}
               onClick={() => handleSelect(option.value)}
             >
               {option.label}

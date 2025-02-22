@@ -85,17 +85,17 @@ const AddShippingBox = () => {
   };
 
   return (
-    <div className="m-10">
+    <div className="m-5 sm:m-7 md:m-10">
       <div className="text-2xl font-extrabold">Add Shipping Box</div>
       <div className="mt-8 flex flex-col gap-5">
         <div className="flex items-center gap-4">
-          <label className="w-[200px] text-lg font-medium">
+          <label className="w-[120px] sm:w-[200px] text-lg font-medium">
             {fieldLabelMap["receiverName"]}:
           </label>
           <input
             type="text"
             name="receiverName"
-            className="border-300 rounded border px-3 py-2 text-base placeholder-shown:text-base"
+            className="border-300 rounded border px-3 py-2 text-base placeholder-shown:text-base w-[200px] sm:w-[300px]"
             placeholder="Enter receiver's name"
             value={shippingBox.receiverName}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -104,7 +104,7 @@ const AddShippingBox = () => {
           />
         </div>
         <div className="flex items-center gap-4">
-          <label className="w-[200px] text-lg font-medium">
+          <label className="w-[120px] sm:w-[200px] text-lg font-medium">
             {fieldLabelMap["weight"]}:
           </label>
           <input
@@ -123,7 +123,7 @@ const AddShippingBox = () => {
           )}
         </div>
         <div className="flex items-center gap-4">
-          <label className="w-[200px] text-lg font-medium">
+          <label className="w-[120px] sm:w-[200px] text-lg font-medium">
             {fieldLabelMap["boxColor"]}:
           </label>
           <ColorPicker
@@ -132,10 +132,11 @@ const AddShippingBox = () => {
           />
         </div>
         <div className="flex items-center gap-4">
-          <label className="w-[200px] text-lg font-medium">
+          <label className="w-[120px] sm:w-[200px] text-lg font-medium">
             {fieldLabelMap["destinationCountry"]}:
           </label>
           <Dropdown
+            width={200}
             value={shippingBox.destinationCountry}
             placeHolder="Select Country"
             options={countryOptions}
@@ -145,7 +146,7 @@ const AddShippingBox = () => {
           />
         </div>
         <div className="flex items-center gap-4">
-          <label className="w-[200px] text-lg font-medium">
+          <label className="w-[120px] sm:w-[200px] text-lg font-medium">
             {fieldLabelMap["cost"]}
           </label>
           <span>{shippingBox.cost} INR</span>
@@ -158,7 +159,7 @@ const AddShippingBox = () => {
         Save
       </button>
       {saveErrorMsg && (
-        <span className="ml-3 text-red-400">{saveErrorMsg}</span>
+        <span className="ml-3 text-red-400 block sm:inline">{saveErrorMsg}</span>
       )}
     </div>
   );
