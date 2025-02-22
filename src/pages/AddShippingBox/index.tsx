@@ -57,7 +57,7 @@ const AddShippingBox = () => {
         break;
       case "weight":
         if (!/^-?\d*$/.test(value.toString())) {
-          setWeightErroMsg("Enter Valid Number");
+          setWeightErroMsg("Enter Valid Number!");
           prevData["weight"] = 0;
         } else {
           setWeightErroMsg("");
@@ -73,8 +73,8 @@ const AddShippingBox = () => {
     );
     if (emptyFields.length > 0) {
       setSaveErrorMsg(
-        emptyFields.map((field) => fieldLabelMap[field]).join("/ ") +
-          " can't be empty",
+        emptyFields.map((field) => fieldLabelMap[field]).join(" / ") +
+          " can't be empty!",
       );
       return;
     }
@@ -86,16 +86,18 @@ const AddShippingBox = () => {
 
   return (
     <div className="m-5 sm:m-7 md:m-10">
-      <div className="text-2xl font-bold sm:font-extrabold">Add Shipping Box</div>
-      <div className="mt-5 sm:mt-8 flex flex-col gap-3 sm:gap-5">
+      <div className="text-2xl font-bold sm:font-extrabold">
+        Add Shipping Box
+      </div>
+      <div className="mt-5 flex flex-col gap-3 sm:mt-8 sm:gap-5">
         <div className="flex items-center gap-2 sm:gap-4">
-          <label className="w-[120px] sm:w-[200px] text-md sm:text-lg font-normal sm:font-medium">
+          <label className="text-md w-[120px] font-normal sm:w-[200px] sm:text-lg sm:font-medium">
             {fieldLabelMap["receiverName"]}:
           </label>
           <input
             type="text"
             name="receiverName"
-            className="border-300 rounded border px-2 py-1 sm:px-3 sm:py-2 text-sm sm:text-base placeholder-shown:text-sm sm:placeholder-shown:text-base w-[180px] sm:w-[300px]"
+            className="border-300 w-[180px] rounded border px-2 py-1 text-sm placeholder-shown:text-sm sm:w-[300px] sm:px-3 sm:py-2 sm:text-base sm:placeholder-shown:text-base"
             placeholder="Enter Receiver's name..."
             value={shippingBox.receiverName}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -104,26 +106,32 @@ const AddShippingBox = () => {
           />
         </div>
         <div className="flex items-center gap-2 sm:gap-4">
-          <label className="w-[120px] sm:w-[200px] text-md sm:text-lg font-normal sm:font-medium">
+          <label className="text-md w-[120px] font-normal sm:w-[200px] sm:text-lg sm:font-medium">
             {fieldLabelMap["weight"]}:
           </label>
-          <input
-            type="text"
-            name="weight"
-            className="border-300 rounded border px-2 py-1 sm:px-3 sm:py-2 text-sm sm:text-base placeholder-shown:text-sm sm:placeholder-shown:text-base w-[120px] sm:wi-[150px]"
-            placeholder="Enter Weight"
-            value={shippingBox.weight.toString()}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              handleChange("weight", Number(e.target.value))
-            }
-          />
-          <span>Kg</span>
-          {weightErroMsg && (
-            <span className="text-red-400">{weightErroMsg}</span>
-          )}
+          <div className="flex flex-col items-start gap-0 sm:flex-row sm:items-center sm:gap-3">
+            <div className="flex items-center gap-2">
+              <input
+                type="text"
+                name="weight"
+                className="border-300 sm:wi-[150px] w-[120px] rounded border px-2 py-1 text-sm placeholder-shown:text-sm sm:px-3 sm:py-2 sm:text-base sm:placeholder-shown:text-base"
+                placeholder="Enter Weight"
+                value={shippingBox.weight.toString()}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleChange("weight", Number(e.target.value))
+                }
+              />
+              <span>Kg</span>
+            </div>
+            {weightErroMsg && (
+              <span className="block text-red-400 sm:inline">
+                {weightErroMsg}
+              </span>
+            )}
+          </div>
         </div>
         <div className="flex items-center gap-2 sm:gap-4">
-          <label className="w-[120px] sm:w-[200px] text-md sm:text-lg font-normal sm:font-medium">
+          <label className="text-md w-[120px] font-normal sm:w-[200px] sm:text-lg sm:font-medium">
             {fieldLabelMap["boxColor"]}:
           </label>
           <ColorPicker
@@ -132,7 +140,7 @@ const AddShippingBox = () => {
           />
         </div>
         <div className="flex items-center gap-2 sm:gap-4">
-          <label className="w-[120px] sm:w-[200px] text-md sm:text-lg font-normal sm:font-medium">
+          <label className="text-md w-[120px] font-normal sm:w-[200px] sm:text-lg sm:font-medium">
             {fieldLabelMap["destinationCountry"]}:
           </label>
           <Dropdown
@@ -147,7 +155,7 @@ const AddShippingBox = () => {
           />
         </div>
         <div className="flex items-center gap-2 sm:gap-4">
-          <label className="w-[120px] sm:w-[200px] text-md sm:text-lg font-normal sm:font-medium">
+          <label className="text-md w-[120px] font-normal sm:w-[200px] sm:text-lg sm:font-medium">
             {fieldLabelMap["cost"]}:
           </label>
           <span>{shippingBox.cost} INR</span>
@@ -155,12 +163,14 @@ const AddShippingBox = () => {
       </div>
       <button
         onClick={handleSave}
-        className="mt-7 sm:mt-10 cursor-pointer rounded-lg border sm:border-2 border-solid border-black bg-slate-100 px-4 py-1 sm:px-8 sm:py-2 text-blue-500 text-base sm:text-xl font-semibold sm:font-bold hover:border-blue-500 focus:outline-none"
+        className="mt-7 cursor-pointer rounded-lg border border-solid border-black bg-slate-100 px-4 py-1 text-base font-semibold text-blue-500 hover:border-blue-500 focus:outline-none sm:mt-10 sm:border-2 sm:px-8 sm:py-2 sm:text-xl sm:font-bold"
       >
         Save
       </button>
       {saveErrorMsg && (
-        <span className="ml-3 text-red-400 block sm:inline">{saveErrorMsg}</span>
+        <span className="ml-0 mt-2 block text-red-400 sm:ml-3 sm:mt-0 sm:inline">
+          {saveErrorMsg}
+        </span>
       )}
     </div>
   );

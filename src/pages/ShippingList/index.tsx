@@ -17,12 +17,12 @@ const columns: ShippingListColumn[] = [
     label: "Box Color",
     render: (value: string) => (
       <span
-        className="inline-block h-10 w-20 self-center border border-solid"
+        className="inline-block h-7 sm:h-8 w-10 sm:w-20 self-center border border-solid"
         style={{ backgroundColor: `rgb${value}` }}
       />
     ),
   },
-  { key: "destinationCountry", label: "Destination" },
+  { key: "destinationCountry", label: "Destination Country" },
   {
     key: "cost",
     label: "Cost",
