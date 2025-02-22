@@ -1,16 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import AddShippingBox from "./pages/AddShippingBox";
 import ShippingList from "./pages/ShippingList";
 import NavBar from "./components/NavBar";
-import { useContext, useEffect } from "react";
-import { ShippingContext } from "./Context";
+import "./App.css";
 
 function App() {
-  const { shippingList } = useContext(ShippingContext);
-
-  useEffect(() => console.log("shippingList -", shippingList), [shippingList]);
-
   return (
     <div className="flex h-screen w-full flex-col">
       <NavBar />

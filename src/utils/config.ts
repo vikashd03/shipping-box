@@ -1,9 +1,11 @@
 export const NAV_ITEMS = [
   {
-    label: "Shopping List",
+    id: "shippingList",
+    label: "Shipping List",
     url: "/shipping/list",
   },
   {
+    id: "addShipping",
     label: "Add Shipping",
     url: "/shipping/add",
   },
