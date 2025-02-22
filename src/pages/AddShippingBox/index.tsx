@@ -136,8 +136,8 @@ const AddShippingBox = () => {
             {fieldLabelMap["destinationCountry"]}:
           </label>
           <Dropdown
-            width={200}
-            height={40}
+            wclassName="w-[160px] sm:w-[200px]"
+            hclassName="h-[30px] sm:h-[40px]"
             value={shippingBox.destinationCountry}
             placeHolder="Select Country..."
             options={countryOptions}
