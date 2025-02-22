@@ -35,9 +35,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ value, onChange }) => {
         type="color"
         value={color}
         onChange={handleChange}
-        className="h-10 w-20 cursor-pointer border-none focus:outline-none"
+        className="h-8 sm:h-10 w-14 sm:w-20 cursor-pointer border border-solid hover:border-blue-500 focus:outline-none rounded-sm"
       />
-      {/* <span>{hexToRgb(color)}</span> */}
     </div>
   );
 };

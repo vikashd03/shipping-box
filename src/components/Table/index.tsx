@@ -27,7 +27,7 @@ const Table = <T,>({ data, columns }: TableProps<T>) => {
         <tbody>
           {data.length > 0 ? (
             data.map((row, rowIndex) => (
-              <tr key={rowIndex} className="border hover:bg-gray-100">
+              <tr key={rowIndex} className="border sm:hover:bg-gray-50">
                 {columns.map((col) => (
                   <td key={String(col.key)} className="border p-2">
                     <div className="flex items-center justify-center text-center">

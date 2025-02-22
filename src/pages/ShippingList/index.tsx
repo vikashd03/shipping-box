@@ -34,8 +34,8 @@ const ShippingList: React.FC = () => {
   const { shippingList } = useContext(ShippingContext);
 
   return (
-    <div className="p-6">
-      <h1 className="mb-4 text-2xl font-bold">Shipping Details</h1>
+    <div className="m-5 sm:m-7 md:m-10">
+      <h1 className="text-2xl font-bold sm:font-extrabold mb-4 sm:mb-8">Shipping Details</h1>
       <Table data={shippingList} columns={columns} />
     </div>
   );
