@@ -9,7 +9,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="h-14 sm:h-16 flex gap-4 items-center justify-between border-b border px-3 sm:px-5 py-5 bg-slate-100 overflow-x-auto">
+    <div className="h-14 sm:h-16 flex gap-4 items-center justify-between border-b border px-3 sm:px-5 py-2 sm:py-5 bg-slate-100 overflow-x-auto">
       <div className="text-2xl font-extrabold whitespace-nowrap">Shipping Box</div>
       <div className="flex flex-row gap-3 sm:gap-6 md:gap-8 mr-5">
         {NAV_ITEMS.map((item, index) => (
